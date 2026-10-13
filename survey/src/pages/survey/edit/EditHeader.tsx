@@ -87,7 +87,9 @@ const SaveButton: FC = () => {
 
   const { changeSurvey, changeSurveyLoading } = useUpdateSurvey({
     id: pageInfo.id,
-    updateData: { ...pageInfo, componentList: editorComponentList },
+    // 保存不携带 isPublished（置 undefined 会被 JSON 序列化丢弃）：
+    // 发布成功后 1 秒才跳转统计页，期间触发的自动保存会携带过期的 false，把问卷改回未发布。
+    updateData: { ...pageInfo, isPublished: undefined, componentList: editorComponentList },
     onSuccess: () => {
       message.success('保存成功');
     },

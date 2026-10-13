@@ -1,0 +1,34 @@
+.layout {
+  @apply container min-h-inherit;
+}
+
+.header {
+  background: rgba(0,0,0,0.88);
+}
+
+// 必须使用驼峰写法
+.flexCenter {
+  @apply flex items-center justify-center;
+}
+.flexCenterStart {
+  @apply flex items-center justify-start;
+}
+.flexCenterEnd {
+  @apply flex items-center justify-end;
+}
+.flexCenterBetween {
+  @apply flex items-center justify-between;
+}
+
+.flexColCenter {
+  @apply flex flex-col items-center justify-center;
+}
+.flexColCenterStart {
+  @apply flex flex-col items-center justify-start;
+}
+.flexColCenterEnd {
+  @apply flex flex-col items-center justify-end;
+}
+.flexColCenterBetween {
+  @apply flex flex-col items-center justify-between;
+}

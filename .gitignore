@@ -20,3 +20,6 @@ yarn-error.log*
 # misc
 coverage/
 .DS_Store
+
+# nested upstream repo backups
+**/.git.orig/

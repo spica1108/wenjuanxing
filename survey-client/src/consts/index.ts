@@ -48,7 +48,7 @@ export const apiConfig: ApiConfigType = {
   // 获取问卷信息
   question: {
     method: 'get',
-    url: 'http://survey-server:3005/api/question',
+    url: 'http://localhost:3005/api/question', // 本地开发使用 localhost，Docker 部署改为 http://survey-server:3005
     needId: true,
   },
 };

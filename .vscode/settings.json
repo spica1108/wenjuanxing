@@ -1,0 +1,5 @@
+{
+  // 使用项目内的 TypeScript 5.x 做 IDE 检查，避免 VS Code 自带 TS 6.x 的弃用报错
+  // （target=ES5 / moduleResolution=node10 / baseUrl 在 TS 6 中标记弃用，项目构建用 5.x，不受影响）
+  "typescript.tsdk": "./survey/node_modules/typescript/lib"
+}

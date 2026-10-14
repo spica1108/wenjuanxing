@@ -32,7 +32,12 @@ const useLoadSurveyEditorData = () => {
         // 设置编辑器组件数据
         resetEditorComponents({
           selectedId,
-          editorComponentList: componentList.map((c) => ({ ...c, id: c.fe_id })), // 加个ID给前端用的
+          // 旧数据可能没有 visible 字段，默认显示，否则新建问卷的画布是空的
+          editorComponentList: componentList.map((c) => ({
+            ...c,
+            id: c.fe_id,
+            visible: c.visible ?? true,
+          })),
           copiedComponent: null,
           activeComponent: null,
           isLoading: false,

@@ -1,6 +1,6 @@
 import { FileTextOutlined, SettingOutlined } from '@ant-design/icons';
 import { Tabs, type TabsProps } from 'antd';
-import React, { FC, useLayoutEffect, useState } from 'react';
+import React, { FC, useLayoutEffect, useRef, useState } from 'react';
 
 import ComponentProps from '@/pages/survey/edit/ComponentProps';
 import PageSetting from '@/pages/survey/edit/PageSetting';
@@ -15,6 +15,7 @@ enum TAB_KEYS {
 const RightPanel: FC = () => {
   const { selectedId, selectNextComponent } = useSurveyEditor();
   const [activeKey, setActiveKey] = useState(TAB_KEYS.PROP_KEY);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!selectedId) {
@@ -56,10 +57,22 @@ const RightPanel: FC = () => {
     }
     // 更新tab
     setActiveKey(key as TAB_KEYS);
+
+    if (key === TAB_KEYS.SETTING_KEY) {
+      // 等切换动画结束、面板可见后，自动聚焦页面设置的第一个输入框
+      window.setTimeout(() => {
+        const el = panelRef.current?.querySelector<HTMLElement>(
+          '.ant-tabs-tabpane-active input, .ant-tabs-tabpane-active textarea'
+        );
+        el?.focus();
+      }, 300);
+    }
   };
 
   return (
-    <Tabs activeKey={activeKey} items={tabsItems} onChange={handleTabChange} className='h-full' />
+    <div ref={panelRef} className='h-full'>
+      <Tabs activeKey={activeKey} items={tabsItems} onChange={handleTabChange} className='h-full' />
+    </div>
   );
 };
 

@@ -75,6 +75,7 @@ http://localhost:3000/question/{问卷id}
 2. **设计端** [survey/vite.config.ts](survey/vite.config.ts)：`/api` 代理目标从 3305 改为 3005（服务端实际端口）
 3. **答题端** [survey-client/next.config.js](survey-client/next.config.js)：新增 `rewrites` 把 `/api/*` 代理到 3005（本地替代 nginx）
 4. **答题端** [survey-client/src/consts/index.ts](survey-client/src/consts/index.ts)：问卷接口地址 `survey-server`（Docker 主机名）改为 `localhost`
+5. **设计端** [survey/src/consts/answer.ts](survey/src/consts/answer.ts)：统计页问卷链接域名 `answer.yangfei.wiki`（原作者线上域名）改为 `localhost:3000`
 
 ## 六、已修复的 bug
 
